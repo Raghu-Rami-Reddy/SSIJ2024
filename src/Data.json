@@ -1,0 +1,101 @@
+[
+    {
+        "ID" : 1,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 10000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 2,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold ring",
+        "CATEGORY" : "Rings",
+        "PRICE" : 20000,
+        "STOCK" : 10,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 3,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 30000,
+        "STOCK" : 30,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 4,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Diamonds",
+        "PRICE" : 40000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 5,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 50000,
+        "STOCK" : 60,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 6,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Rings",
+        "PRICE" : 60000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 7,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 70000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 8,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Necklace",
+        "PRICE" : 80000,
+        "STOCK" : 80,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 9,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 90000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 10,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold necklace",
+        "CATEGORY" : "Necklace",
+        "PRICE" : 100000,
+        "STOCK" : 90,
+        "WEIGHT" : "10g"
+    },
+    {
+        "ID" : 11,
+        "PRODUCT" : "https://plus.unsplash.com/premium_photo-1723563578891-e0972abf64e0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Z29sZCUyMGNoYWlufGVufDB8fDB8fHww",
+        "NAME" : "22K plain gold chain",
+        "CATEGORY" : "Chains",
+        "PRICE" : 110000,
+        "STOCK" : 100,
+        "WEIGHT" : "10g"
+    }
+]

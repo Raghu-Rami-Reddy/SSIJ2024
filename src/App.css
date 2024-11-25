@@ -1,0 +1,290 @@
+.main .MenuToggle {
+  position: fixed;
+  color: #CC7B25 !important;
+  z-index: 150;
+  top: 5px;
+ }
+ .main .Toggle {
+  color: #CC7B25 !important;
+  position: fixed;
+  z-index: 150;
+  top: 5px;
+ }
+/* Sidebar */
+.sidebar {
+  height: 100vh;
+  min-width: 150px;
+  background: white;
+}
+.sidebarTab .toast, .sidebarTab .submenu {
+  /* Underlying values */
+  opacity: 1;
+  transform:translateX(0);
+  animation: fade-in 0.25s ease-in;
+  
+  /* Replace is the default value */
+  /* for animation-composition
+  animation-composition: replace; */
+}
+@keyframes fade-in {
+  0% {
+    /* Effect values */
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+.sidebar .sidebarTab button {
+  justify-content: flex-start;
+  color: #565D6D;
+  text-transform: capitalize;
+  font-size: 1rem;
+  border-radius: 1rem;
+  font-weight: 400;
+}
+.sidebar .sidebarTab button .arrow, .Dashboard, .Orders, .Users, .Notifications {
+  font-size: 1rem;
+}
+.sidebar .sidebarTab button .Reports, .Products, .Categories, .Settings {
+  font-size: 1.25rem;
+}
+.sidebar .sidebarTab button:hover {
+  background-color: #F8E8D7;
+}
+.sidebar .sidebarTab button.active,
+.sidebar .sidebarTab button.active *{
+  color: #CC7B25 !important;
+  background-color: #F8E8D7;
+}
+.sidebar .sidebarTab li {
+  position: relative;
+}
+.sidebar .sidebarTab li .submenu {
+  position: relative;
+  top: 100%;
+  left: 0px;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all .4s;
+}
+.sidebar .sidebarTab li .submenu.open {
+  height: auto;
+  opacity: 1;
+}
+.sidebar .sidebarTab .submenu li button {
+  font-size: 0.75rem;
+  margin: 2px;
+  padding: 2px;
+}
+.sidebar .sidebarTab .submenu li button:hover {
+  background-color: #FDF7F2 !important;
+  border-width: 0.1rem !important;
+  border-color: #CC7B25 !important;
+}
+.sidebar .sidebarTab .submenu li button .icon {
+  font-size: 1rem;
+}
+.sidebar .sidebarTab .arrow.rotate {
+  transform: rotate(90deg);
+  transition: all .4s;
+}
+.sidebar .sidebarTab .submenu li button.active,
+.sidebar .sidebarTab .submenu li button.active *{
+  color: #CC7B25 !important;
+  background-color: #FDF7F2;
+}
+
+
+/* Header */
+header {
+  background-color: white;
+  border-bottom: 1px solid rgba(61, 61, 61, 0.1);
+}
+
+header .pgName {
+  color: #CC7B25;
+  font-size: 1.25rem;
+}
+header .searchBox i {
+  position: absolute; 
+}
+header .searchBox i svg {
+  color: #CC7B25;
+  font-size:20px;
+  margin-top: 8px;
+  margin-left: 4px;
+}
+header .searchBox input {
+  font-size: 1rem;
+  padding-left: 25px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #F8E8D7;
+  border-color:  #CC7B25 !important;
+}
+header .searchBox input:focus {
+  outline:none !important;
+}
+header .searchBox .input::placeholder{
+  color: #CC7B25;
+  opacity: 0.5;
+}
+header li button {
+ height: 40px;
+ width: 30px;
+ border-radius: 100px !important; 
+}
+header li button:hover {
+  background-color: #F8E8D7 !important; 
+}
+header li button svg {
+  font-size: 28px;
+  color: #CC7B25;
+}
+header li .mItems:hover {
+  color: #CC7B25;
+  background-color: #F8E8D7 !important;
+}
+header li .popper {
+  margin-top: 11px !important;
+  margin-left: 15px !important;
+  width: 140px;
+}
+
+
+/* Products table */
+.table-res-p {
+  margin-bottom: 50px;
+}
+.tableP {
+  margin: 0 auto;
+}
+.tableP th {
+  font-size: 1rem;
+  text-align: center;
+}
+.tableP td, .tableP th {
+  border: 1px solid #fff;
+  padding: 8px;
+}
+
+.tableP tr:nth-child(even){background-color: #FDF7F2;}
+
+.tableP tr:hover {background-color: #F8E8D7;}
+
+.tableP th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #F8E8D7;
+  color: #CC7B25;
+}
+.tableP td {
+  color: #565D6D;
+  font-size: 1rem;
+}
+.tableP td .actions button{
+  color: #CC7B25;
+  font-size: 1.25rem;
+  padding: 2px;
+}
+.tableP td .actions button:hover{
+  color: #fff;
+}
+
+
+/* Pagination */
+.pagination {
+  background-color: #F8E8D7;
+}
+.pagination li {
+  padding: 0 5px;
+  font-weight: bold;
+  color: #CC7B25;
+}
+.pagination .active {
+  background-color: #CC7B25 !important;
+  color: #fff;
+  border-radius: 0.7rem;
+}
+.pagination_filter {
+  color: #CC7B25;
+}
+
+/* Dashboard */
+@keyframes fade-inn {
+  0% {
+    /* Effect values */
+    opacity: 0.2;
+    transform: translateY(50px);
+  }}
+.dash .wrapper {
+  background-color: #fff;
+  cursor: pointer;
+  min-width: 220px;
+  opacity: 1;
+  transform:translateY(0);
+  animation: fade-inn 0.25s ease-in;
+}
+.dash .wrapper:hover {
+  background-color: #F8E8D7;
+}
+.ordersTable {
+  background-color: rgba(248, 232, 215, 0.3);
+}
+
+/* login Page */
+.logIn {
+  background-color: #F8E8D7;
+}
+.logIn button {
+  background-color: rgba(204, 123, 37, 0.6);
+}
+.logIn button:hover {
+  background-color: #CC7B25;
+}
+
+/* Not Found Page */
+.NotFoundPage {
+  background-color: #F8E8D7;
+  height: 100vh;
+}
+.NotFoundPage .icon {
+  color: #CC7B25;
+}
+
+.NotFoundPage .icon {
+  transition-property: transform;
+  transition-duration: 1s;
+}
+.NotFoundPage .icon:hover {
+  animation-name: rotate; 
+  animation-duration: 2s; 
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
+/* Add Product Page */
+.addPrd .actAddPrd button {
+  background-color: #F8E8D7;
+}
+.addPrd .actAddPrd button:hover {
+  background-color: #CC7B25;
+  color: #fff;
+  transition: 0.6s;
+}
+.viewProdTitle {
+  color: #CC7B25;
+}
+.closeView {
+  color: #CC7B25;
+}
+.addProdTable {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
