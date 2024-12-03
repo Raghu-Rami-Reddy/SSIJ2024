@@ -1,56 +1,39 @@
-import { IoBagHandle, IoPieChart, IoPeople, IoCart } from 'react-icons/io5';
-
+import { PiShoppingCartSimpleDuotone } from "react-icons/pi";
+import { PiListPlus } from "react-icons/pi";
+import { PiUserCircleDuotone } from "react-icons/pi";
 
 export default function DashboardStatsCards() {
     
 	return (
-		<div className="dash flex justify-center items-center gap-4 px-[3%] flex-wrap">
-			<div className="wrapper rounded-lg p-5 flex-1 flex items-center shadow-md border border-orange-200">
-				<div className="rounded-full h-12 w-12 flex items-center justify-center bg-sky-500">
-					<IoBagHandle className="text-2xl text-white" />
+		<div className="dash flex justify-center items-center gap-4 flex-wrap pb-10">
+			<div className="wrapper rounded-lg p-5 flex-1 flex items-start justify-between bg-[#FDF7F2]">
+				<div className="flex flex-col">
+					<span className="text-[16px] text-[#171A1F] font-bold pb-2">New orders</span>
+					<span className="text-4xl text-[#171A1F] font-bold pb-3">32</span>
+					<span className="text-sm text-[#117B34] pl-2">^ 5.39%<a className="text-[#565D6D] font-normal pl-2">from last month</a></span>
 				</div>
-				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Total Sales</span>
-					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$54232</strong>
-						<span className="text-sm text-green-500 pl-2">+343</span>
-					</div>
+				<div className="rounded-lg h-[44px] w-[44px] flex items-center justify-center border border-[#CC7B25]">
+					<PiShoppingCartSimpleDuotone className="text-2xl text-[#CC7B25]"/> 
 				</div>
 			</div>
-			<div className="wrapper rounded-lg p-5 flex-1 flex items-center shadow-md border border-orange-200">
-				<div className="rounded-full h-12 w-12 flex items-center justify-center bg-orange-600">
-					<IoPieChart className="text-2xl text-white" />
+			<div className="wrapper rounded-lg p-5 flex-1 flex items-start justify-between bg-[#EEFCFF]">
+				<div className="flex flex-col">
+					<span className="text-[16px] text-[#171A1F] font-bold pb-2">Open orders</span>
+					<span className="text-4xl text-[#171A1F] font-bold pb-3">31</span>
+					<span className="text-sm text-[#117B34] pl-2">^ 5.39%<a className="text-[#565D6D] font-normal pl-2">from last month</a></span>
 				</div>
-				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Total Expenses</span>
-					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">$3423</strong>
-						<span className="text-sm text-green-500 pl-2">-343</span>
-					</div>
+				<div className="rounded-lg h-[44px] w-[44px] flex items-center justify-center border border-[#007A8F]">
+					<PiListPlus className="text-2xl text-[#007A8F]"/> 
 				</div>
 			</div>
-			<div className="wrapper rounded-lg p-5 flex-1 flex items-center shadow-md border border-orange-200">
-				<div className="rounded-full h-12 w-12 flex items-center justify-center bg-yellow-400">
-					<IoPeople className="text-2xl text-white" />
+			<div className="wrapper rounded-lg p-5 flex-1 flex items-start justify-between bg-[#F0F8FE]">
+				<div className="flex flex-col">
+					<span className="text-[16px] text-[#171A1F] font-bold pb-2">All orders</span>
+					<span className="text-4xl text-[#171A1F] font-bold pb-3">298</span>
+					<span className="text-sm text-[#117B34] pl-2">^ 6.39%<a className="text-[#565D6D] font-normal pl-2">from last month</a></span>
 				</div>
-				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Total Customers</span>
-					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">12313</strong>
-						<span className="text-sm text-red-500 pl-2">-30</span>
-					</div>
-				</div>
-			</div>
-			<div className="wrapper rounded-lg p-5 flex-1 flex items-center shadow-md border border-orange-200">
-				<div className="rounded-full h-12 w-12 flex items-center justify-center bg-green-600">
-					<IoCart className="text-2xl text-white" />
-				</div>
-				<div className="pl-4">
-					<span className="text-sm text-gray-500 font-light">Total Orders</span>
-					<div className="flex items-center">
-						<strong className="text-xl text-gray-700 font-semibold">16432</strong>
-						<span className="text-sm text-red-500 pl-2">-43</span>
-					</div>
+				<div className="rounded-lg h-[44px] w-[44px] flex items-center justify-center border border-[#007A8F]">
+					<PiUserCircleDuotone className="text-2xl text-[#007A8F]"/> 
 				</div>
 			</div>
 		</div>

@@ -122,7 +122,7 @@ const Sidebar = ()=>{
                                         <span className="icon mx-2">
                                             <IoIosList />
                                         </span>
-                                        {" "}All orders
+                                        <Link to='/allorders'>{" "}All orders</Link>
                                         </Button>
                                     </li>
                                     <li className="flex justify-end ">

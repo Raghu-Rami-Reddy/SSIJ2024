@@ -192,24 +192,75 @@ header li .popper {
   color: #fff;
 }
 
+/* Orders table */
+.status {
+  height: 52px;
+}
+.status .export {
+  border: 1px solid #CC7B25;
+  color: #CC7B25;
+}
+.status .active{
+  border-bottom: 5px solid #CC7B25;
+  color: #CC7B25;
+  
+}
+.status li{
+  color: #A8ADB7;
+  font-size: 14px;
+  cursor: pointer;
+}
+.ordersT {
+  border: 1px solid #DEE1E6;
+  border-radius: 10px;
+}
+.tableO {
+  margin: 0 auto;
+
+}
+.tableO td, .tableO th {
+  padding: 8px;   
+}
+.tableO tr:hover {background-color: #F8E8D7;}
+.tableO th {
+  padding: 15px;
+  background-color: #F3F4F6;
+  font-weight: 600; 
+  color: #171A1FFF;
+  font-size: 14px;
+}
+.tableO td {
+  font-size: 14px;
+  padding: 15px;
+  border-top-style: solid;
+  border-top-color: #DEE1E6;
+  border-top-width: 1px;
+}
+.tableO td .actions button{
+  color: #CC7B25;
+  font-size: 1.25rem;
+  padding: 2px;
+}
 
 /* Pagination */
-.pagination {
-  background-color: #F8E8D7;
+.results {
+  font-size: 14px;
+  color: #424856;
 }
-.pagination li {
-  padding: 0 5px;
-  font-weight: bold;
-  color: #CC7B25;
+.pagination a {
+  font-size: 14px;
+  list-style: none;
+  color: #9095A1;
 }
-.pagination .active {
+.pagination  .active a {
   background-color: #CC7B25 !important;
-  color: #fff;
-  border-radius: 0.7rem;
+  color: #fff !important;
+  border-radius: 50%;
 }
-.pagination_filter {
-  color: #CC7B25;
+.pagination a {
+  padding: 4px 10px 4px 10px;
 }
+
 
 /* Dashboard */
 @keyframes fade-inn {
@@ -219,19 +270,54 @@ header li .popper {
     transform: translateY(50px);
   }}
 .dash .wrapper {
-  background-color: #fff;
   cursor: pointer;
-  min-width: 220px;
+  min-width: 300px;
+  height: 140px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 17px #171a1f3B, 0px 0px 2px #171a1f33;
   opacity: 1;
   transform:translateY(0);
   animation: fade-inn 0.25s ease-in;
 }
 .dash .wrapper:hover {
-  background-color: #F8E8D7;
+  background-color: #fff;
 }
-.ordersTable {
-  background-color: rgba(248, 232, 215, 0.3);
+.dashReport .export {
+  border: 1px solid #CC7B25;
+  color: #CC7B25;
 }
+.ordersD {
+  border: 1px solid #DEE1E6;
+  border-radius: 10px;
+  box-shadow: 0px 8px 17px #171a1f3B, 0px 0px 2px #171a1f33;
+}
+.tableD {
+  margin: 0 auto;
+}
+.tableD td, .tableD th {
+  padding: 8px;   
+}
+.tableD tr:hover {background-color: #F8E8D7;}
+.tableD th {
+  padding: 15px;
+  background-color: #F3F4F6;
+  font-weight: 600; 
+  color: #565D6D;
+  font-size: 14px;
+}
+.tableD td {
+  font-size: 14px;
+  padding: 15px;
+  border-top-style: solid;
+  border-top-color: #DEE1E6;
+  border-top-width: 1px;
+}
+.tableD td .actions button{
+  color: #CC7B25;
+  font-size: 1.25rem;
+  padding: 2px;
+}
+
 
 /* login Page */
 .logIn {

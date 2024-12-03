@@ -1,22 +1,23 @@
 import { useState } from "react";
-import { FaRegEye } from "react-icons/fa";
-import { CiEdit } from "react-icons/ci";
-import { MdDeleteForever } from "react-icons/md";
 import Tooltip from '@mui/material/Tooltip';
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
+import { PiExportBold } from "react-icons/pi";
+import { RxDotsVertical } from "react-icons/rx";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Data from './../../Data.json';
+import Data from './../../DataOrders.json';
 
 function Orders() {
     const [currentPage, setCurrentPage] = useState(1)
-    const [itemsPerPage, setItemsPerPage] = useState(5);
-    const [filterCat, setFilterCat] = useState("");
-    const [searchTerm, setSearchTerm] = useState('');
-    const [sortBy, setSortBy] = useState("ID"); // Default sorting by ID
+    const [itemsPerPage, setItemsPerPage] = useState(10);
+    const [filterStatus, setFilterStatus] = useState("");
+    const [activeStatus, setActiveStatus] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const [selectedRows, setSelectedRows] = useState([]);
+    const [sortBy, setSortBy] = useState("orderId"); // Default sorting by orderId
     const [sortOrder, setSortOrder] = useState("asc"); // Default ascending order
     const lastIndex = currentPage * itemsPerPage;
     const firstIndex = lastIndex - itemsPerPage;
@@ -33,10 +34,10 @@ function Orders() {
     });
 
     const filteredData = sortedData.filter(item => 
-        item.NAME.toLowerCase().includes(searchTerm.toLowerCase()) && (filterCat === "" || item.CATEGORY === filterCat)
+        item.company.toLowerCase().includes(searchTerm.toLowerCase()) && (filterStatus === "" || item.status === filterStatus)
     );
-    const records = searchTerm === '' && filterCat === '' ? sortedData.slice(firstIndex, lastIndex):filteredData.slice(firstIndex, lastIndex);
-    const npage = searchTerm === '' && filterCat === '' ? Math.ceil(sortedData.length / itemsPerPage):Math.ceil(filteredData.length / itemsPerPage);
+    const records = searchTerm === '' && filterStatus === '' ? sortedData.slice(firstIndex, lastIndex):filteredData.slice(firstIndex, lastIndex);
+    const npage = searchTerm === '' && filterStatus === '' ? Math.ceil(sortedData.length / itemsPerPage):Math.ceil(filteredData.length / itemsPerPage);
     const numbers = [...Array(npage + 1).keys()].slice(1);
 
 
@@ -48,6 +49,42 @@ function Orders() {
         setSortBy(key);
         setSortOrder("asc");
         }
+    };
+
+    // Function to handle rows selection
+    const handleRowSelection = (orderId) => {
+        setSelectedRows((prev) =>
+          prev.includes(orderId) ? prev.filter((id) => id !== orderId) : [...prev, orderId]
+        );
+      };
+    // Function to handle all rows selection
+    const handleSelectAll = () => {
+    if (selectedRows.length === records.length) {
+        setSelectedRows([]); // Deselect all
+    } else {
+        setSelectedRows(records.map((row) => row.orderId)); // Select all
+    }
+    };
+    // Function to handle row export to csv
+    const handleExport = () => {
+    const selectedData = Data.filter((row) => selectedRows.includes(row.orderId));
+    const csvContent =
+        "data:text/csv;charset=utf-8," +
+        ["id,Company Name,Weight,Order ID,Order Date,Status"]
+        .concat(
+            selectedData.map(
+            (row) =>
+                `${row.id},${row.company},${row.weight},${row.orderId},${row.date},${row.status}`
+            )
+        )
+        .join("\n");
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "selected_orders.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     };
 
     const handleChange = (event) => {
@@ -71,8 +108,8 @@ function Orders() {
         <>
         <div className="orders px-[3%] pb-[2%] flex justify-between items-center ">
             <div className="flex justify-start items-center">
-                <h6 className="pr-4">Products per page </h6>
-                <FormControl sx={{ minWidth: 100 }} size="small">
+                <p className="text-[14px] pr-1 text-[#A8ADB7]">Orders per page </p>
+                <FormControl sx={{ minWidth: 60 }} size="small">
                     <InputLabel id="demo-select-small-label">Items</InputLabel>
                     <Select
                     labelId="demo-select-small-label"
@@ -81,96 +118,116 @@ function Orders() {
                     label="Items"
                     onChange={handleChange}
                     >
-                    <MenuItem value={5}>5</MenuItem>
                     <MenuItem value={10}>10</MenuItem>
                     <MenuItem value={20}>20</MenuItem>
                     <MenuItem value={30}>30</MenuItem>
-                    <MenuItem value={30}>40</MenuItem>
-                    <MenuItem value={30}>50</MenuItem>
+                    <MenuItem value={40}>40</MenuItem>
+                    <MenuItem value={50}>50</MenuItem>
                     </Select>
                 </FormControl>
             </div>
-            <label> Filter by 
-            <select
-              value={filterCat} 
-              onChange={(e) => setFilterCat(e.target.value)}
-              className="mx-2 p-3 text-gray-500 bg-gray-100 rounded-md drop-shadow-md "
-            >
-              <option value="">All Categories</option>
-              {[...new Set(Data.map((item) => item.CATEGORY))].map((cat) => (
-                <option key={cat} value={cat}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-            </label>
             <div>
                 <input 
                     type="text" 
-                    placeholder="Search by Product Name"
+                    placeholder="Search by Company Name"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="p-2 border border-gray-300 rounded outline-none"
+                    className="p-2 text-[14px] border border-gray-300 rounded-lg outline-none"
                 />
             </div>
         </div>
-        <div className='table-responsive'>
-             <table className="tableP w-[95%]">
+        <div className="status px-[3%] pb-[2%] flex justify-between items-center">
+            <ul className="list-none flex flex-wrap">
+                <li onClick={()=>{setActiveStatus(""); setFilterStatus("")}} className={`p-1 ${activeStatus === "" ? 'active':''}`} key={"All orders"}>All orders</li>
+                <li onClick={()=>{setActiveStatus("New"); setFilterStatus("New")}} className={`p-1 ${activeStatus === "New" ? 'active':''}`} key={"New"}>New</li>
+                <li onClick={()=>{setActiveStatus("In progress"); setFilterStatus("In progress")}} className={`p-1 ${activeStatus === "In progress" ? 'active':''}`} key={"In progress"}>In progress</li>
+                <li onClick={()=>{setActiveStatus("Dispatched"); setFilterStatus("Dispatched")}} className={`p-1 ${activeStatus === "Dispatched" ? 'active':''}`} key={"Dispatched"}>Dispatched</li>
+                <li onClick={()=>{setActiveStatus("Shipped"); setFilterStatus("Shipped")}} className={`p-1 ${activeStatus === "Shipped" ? 'active':''}`} key={"Shipped"}>Shipped</li>
+                <li onClick={()=>{setActiveStatus("Delivered"); setFilterStatus("Delivered")}} className={`p-1 ${activeStatus === "Delivered" ? 'active':''}`} key={"Delivered"}>Delivered</li>
+                <li onClick={()=>{setActiveStatus("Cancelled"); setFilterStatus("Cancelled")}} className={`p-1 ${activeStatus === "Cancelled" ? 'active':''}`} key={"Cancelled"}>Cancelled</li>
+            </ul>
+            <div className="export rounded-md">
+                <button onClick={handleExport} className="px-2 py-1 text-[14px] inline-flex items-center justify-center">
+                    <PiExportBold className="mb-1"/>
+                    <p className="text-[14px] px-1">Export</p>
+                </button>
+            </div>
+        </div>
+        <div className='Orders-responsive w-[95%] mx-auto'>
+            <div className="ordersT overflow-x-scroll">
+             <table className="tableO w-[100%]">
                 <thead>
                     <tr>
-                        <th className="hover:cursor-pointer" onClick={() => handleSort("ID")}>ID {sortBy === "ID" && (sortOrder === "asc" ? "↑" : "↓")}</th>
-                        <th>PRODUCT</th>
-                        <th>NAME</th>
-                        <th>CATEGORY</th>
-                        <th>PRICE</th>
-                        <th>STOCK</th>
-                        <th>WEIGHT</th>
-                        <th>ACTION</th>
+                        <th className="text-center">
+                            <input
+                                type="checkbox"
+                                checked={selectedRows.length === records.length && records.length > 0}
+                                onChange={handleSelectAll}
+                            />
+                        </th>
+                        <th className="text-left">Company Name</th>
+                        <th className="text-left">Weight(in grams)</th>
+                        <th className="text-left hover:cursor-pointer" onClick={() => handleSort("orderId")}>Order ID {sortBy === "orderId" && (sortOrder === "asc" ? "↑" : "↓")}</th>
+                        <th className="text-left">Order Date</th>
+                        <th className="text-left">Status</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     {records.length > 0 ? (
                     records.map(d => (
-                    <tr key={d.ID}>
-                        <td>{d.ID}</td>
-                        <td>
-                            <img src={d.PRODUCT} className="w-[75px] h-[75px] rounded-md"/>
+                    <tr key={d.orderId}>
+                        <td className="p-2 text-center">
+                            <input
+                            type="checkbox"
+                            checked={selectedRows.includes(d.orderId)}
+                            onChange={() => handleRowSelection(d.orderId)}
+                            />
                         </td>
-                        <td>    
-                            <h6 className="text-ellipsis text-wrap">{d.NAME}</h6>  
-                        </td>
-                        <td>{d.CATEGORY}</td>
-                        <td>{d.PRICE}</td>
-                        <td>{d.STOCK}</td>
-                        <td>{d.WEIGHT}</td>
+                        <td className="text-[#171A1F] font-bold">{d.company}</td>
+                        <td className="text-[#171A1F] font-normal">{d.weight}</td>
+                        <td className="text-[#171A1F] font-normal">{d.orderId}</td>
+                        <td className="text-[#9095A1]">{d.date}</td>
                         <td>
-                            <div className="actions flex items-center justify-around">
-                                <Tooltip title="view" placement="top"><button className="hover:bg-green-500 rounded-md"><FaRegEye /></button></Tooltip>
-                                <Tooltip title="edit" placement="top"><button className="hover:bg-yellow-500 rounded-md"><CiEdit /></button></Tooltip>
-                                <Tooltip title="delete" placement="top"><button className="hover:bg-red-500 rounded-md"><MdDeleteForever /></button></Tooltip>
+                            <span className={`inline-block rounded-full px-2 py-1 text-xs font-medium ${
+                                d.status === "New"? "bg-[#F0F8FE] text-[#1091F4]"
+                                : d.status === "In progress"? "bg-[#FEF8F1] text-[#EF9834]"
+                                : d.status === "Dispatched"? "bg-[#FFFADF] text-[#FFD400]"
+                                : d.status === "Shipped"? "bg-[#EEFCFF] text-[#007A8F]"
+                                : d.status === "Delivered"? "bg-[#EEFDF3] text-[#117B34]"
+                                : d.status === "Cancelled"? "bg-[#FEF0F1] text-[#F22128]"
+                                : "bg-green-50 text-green-600"
+                                }`}>{d.status}
+                            </span>
+                        </td>
+                        <td className="text-[#9095A1]">
+                            <div className="flex items-center justify-around">
+                                <Tooltip title="view" placement="top"><button><RxDotsVertical /></button></Tooltip>
                             </div>
                         </td>
                     </tr>
                     ))):(<tr><td colSpan="4">No results found</td></tr>)}
                 </tbody>
              </table>
-             <nav className="flex items-center justify-center">
-                <ul className="pagination flex items-center justify-center w-[95%] p-2">
-                    <li className="page-item">
+            </div>
+            <nav className="flex items-center justify-between mx-1">
+                <div className="results">{records.length} results</div>
+                <ul className="pagination flex items-center justify-end">
+                    <li className="page-item pr-1">
                         <a href="#" className="page-link" onClick={prePage}><FaAngleLeft /></a>
                     </li>
                     {
                         numbers.map((n,i) => (
-                            <li className={`page-item ${currentPage === n ? 'active':''}`} key={i}>
-                                <a href="#" className="page-link mx-1" onClick={()=>changePage(n)}>{n}</a>
+                            <li className={`page-item flex items-center justify-center ${currentPage === n ? 'active':''}`} key={i}>
+                                <a href="#" className="page-link px-2" onClick={()=>changePage(n)}>{n}</a>
                             </li>
                         ))
                     }
-                    <li className="page-item">
+                    <li className="page-item pl-1">
                         <a href="#" className="page-link" onClick={nextPage}><FaAngleRight /></a>
                     </li>
                 </ul>
-             </nav>
+            </nav>
         </div>
         </>
     )

@@ -56,6 +56,10 @@ const Header = () => {
             path: '/addproduct',
 	        label: 'Add Product'
 	    },
+        {
+            path:'/allorders',
+            label: 'All Orders'
+        },
     ]
     let obj = pathdata.find((data) =>(location.pathname === data.path))
     const handleToggle = () => {
@@ -105,8 +109,8 @@ const Header = () => {
             <ul className='flex items-center justify-center flex-wrap gap-2'>
                 <li>
                     <div className="searchBox">
-                        <i><IoSearchOutline /></i> 
-                        <input type='text' placeholder='Search...' className='input w-100px rounded-2xl border' />
+                        <i><IoSearchOutline className="pr-1"/></i> 
+                        <input type='text' placeholder='Search...' className='input w-100px rounded-lg' />
                     </div>
                 </li>
                 <li>

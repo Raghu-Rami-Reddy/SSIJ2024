@@ -7,6 +7,7 @@ import Products from './pages/Products';
 import Orders from './pages/Orders';
 import Layout from './components/Layout';
 import AddProduct from './pages/AddProduct';
+import AllOrders from './pages/AllOrders';
 import ProtectedRoute from './components/ProtectedRoute';
 import { UserAuthContextProvider } from './context/UserAuthContext';
 
@@ -20,6 +21,7 @@ function App() {
               <Route path='/products' exact={true} element={<ProtectedRoute><Products/></ProtectedRoute>}/>
               <Route path='/addproduct' exact={true} element={<ProtectedRoute><AddProduct/></ProtectedRoute>}/>
               <Route path='/orders' exact={true} element={<ProtectedRoute><Orders/></ProtectedRoute>}/>
+              <Route path='/allorders' exact={true} element={<ProtectedRoute><AllOrders/></ProtectedRoute>}/>
             </Route>
             <Route path='/login' exact={true} element={<Login/>}/>
             <Route path='*' exact={true} element={<NotFoundPage />}/>
